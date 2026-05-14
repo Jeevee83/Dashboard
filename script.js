@@ -1,9 +1,10 @@
-// CONFIGURAZIONE
-const PASSWORD_CORRETTA = "miaPassword123"; // Cambiala qui!
+const PASSWORD_CORRETTA = "laTuaPassword"; // Cambiala!
 
+// Qui gestisci tutto: Categorie, Link e Colori
 const MIEI_LINK = [
     {
         categoria: "Lavoro",
+        colore: "#3b82f6", // Blu
         links: [
             { nome: "GitHub", url: "https://github.com" },
             { nome: "ChatGPT", url: "https://chat.openai.com" },
@@ -11,16 +12,23 @@ const MIEI_LINK = [
         ]
     },
     {
-        categoria: "Social & Svago",
+        categoria: "Grafica",
+        colore: "#a855f7", // Viola
         links: [
-            { nome: "YouTube", url: "https://youtube.com" },
-            { nome: "Reddit", url: "https://reddit.com" }
+            { nome: "Canva", url: "https://canva.com" },
+            { nome: "Pinterest", url: "https://pinterest.com" }
+        ]
+    },
+    {
+        categoria: "Soldi",
+        colore: "#22c55e", // Verde
+        links: [
+            { nome: "Home Banking", url: "https://..." },
+            { nome: "PayPal", url: "https://paypal.com" }
         ]
     }
-    // Aggiungi quante categorie vuoi...
 ];
 
-// FUNZIONE PER CONTROLLARE LA PASSWORD
 function checkPassword() {
     const input = document.getElementById("password-input").value;
     if (input === PASSWORD_CORRETTA) {
@@ -32,19 +40,28 @@ function checkPassword() {
     }
 }
 
-// Supporto tasto Invio per il login
-document.getElementById("password-input").addEventListener("keyup", function(event) {
-    if (event.key === "Enter") { checkPassword(); }
+document.getElementById("password-input").addEventListener("keyup", (e) => {
+    if (e.key === "Enter") checkPassword();
 });
 
-// FUNZIONE PER GENERARE I BOTTONI
 function renderLinks() {
     const container = document.getElementById("links-container");
+    container.innerHTML = ""; // Pulisce il contenitore
+
     MIEI_LINK.forEach(cat => {
-        let html = `<div class="category"><h2>${cat.categoria}</h2><div class="grid">`;
+        let html = `
+            <div class="category">
+                <h2 style="border-left-color: ${cat.colore}">${cat.categoria}</h2>
+                <div class="grid">`;
+        
         cat.links.forEach(l => {
-            html += `<a href="${l.url}" target="_blank" class="link-card">${l.nome}</a>`;
+            // Applichiamo il colore della categoria al bordo o all'hover tramite variabile CSS inline
+            html += `
+                <a href="${l.url}" target="_blank" class="link-card" style="--accent: ${cat.colore}">
+                    ${l.nome}
+                </a>`;
         });
+        
         html += `</div></div>`;
         container.innerHTML += html;
     });

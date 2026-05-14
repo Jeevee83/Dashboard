@@ -1,97 +1,105 @@
 :root {
-    --bg-color: #0f0f0f;
-    --card-bg: #1e1e1e;
-    --text-color: #e0e0e0;
-    --accent-color: #3b82f6;
-    --hover-color: #2563eb;
+    --bg-color: #0b0e14;
+    --card-bg: #161b22;
+    --text-primary: #ffffff;
+    --text-secondary: #8b949e;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', -apple-system, sans-serif;
     background-color: var(--bg-color);
-    color: var(--text-color);
+    color: var(--text-primary);
     margin: 0;
-    display: flex;
-    justify-content: center;
+    line-height: 1.5;
 }
 
-/* Overlay Login */
-#login-overlay {
-    position: fixed;
-    top:0; left:0; width: 100%; height: 100%;
-    background: var(--bg-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.login-box {
-    text-align: center;
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-input {
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    margin-bottom: 10px;
-    width: 80%;
-}
-
-button {
-    padding: 10px 20px;
-    background: var(--accent-color);
-    border: none;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Dashboard Layout */
 #main-content {
-    width: 90%;
-    max-width: 1000px;
-    padding: 40px 0;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
 }
 
-h1 { text-align: center; margin-bottom: 40px; font-weight: 300; }
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 50px;
+    letter-spacing: -1px;
+}
 
 .category {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 .category h2 {
-    border-left: 4px solid var(--accent-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    border-left: 3px solid; /* Il colore viene dal JS */
     padding-left: 15px;
     margin-bottom: 20px;
-    font-size: 1.2rem;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
 }
 
 .link-card {
     background: var(--card-bg);
-    padding: 20px;
-    text-align: center;
-    border-radius: 12px;
+    padding: 15px;
+    border-radius: 8px;
     text-decoration: none;
-    color: var(--text-color);
-    transition: transform 0.2s, background 0.2s;
-    display: block;
-    font-weight: 500;
-    border: 1px solid #333;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    text-align: center;
+    border: 1px solid #30363d;
+    transition: all 0.2s ease;
 }
 
+/* Effetto Hover dinamico basato sul colore della categoria */
 .link-card:hover {
-    transform: translateY(-5px);
-    background: var(--accent-color);
-    border-color: var(--accent-color);
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Login box stilizzata */
+#login-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-color);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 1000;
+}
+
+.login-box {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #30363d;
+    width: 300px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    color: white;
+    border-radius: 6px;
+    margin: 15px 0;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #238636;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
 }
