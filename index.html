@@ -3,30 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Dashboard</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Overlay di Accesso -->
     <div id="login-overlay">
         <div class="login-box">
-            <h2>Accesso Riservato</h2>
-            <input type="password" id="password-input" placeholder="Inserisci Password">
-            <button onclick="checkPassword()">Entra</button>
+            <h2>Dashboard Riservata</h2>
+            <input type="password" id="password-input" placeholder="Password">
+            <button onclick="checkPassword()">Accedi</button>
         </div>
     </div>
 
-    <!-- Contenuto Principale (nascosto all'inizio) -->
     <div id="main-content" style="display: none;">
         <header>
             <h1>Dashboard</h1>
+            <div class="top-controls">
+                <button id="edit-btn" onclick="toggleEditMode()">🔧 Modifica</button>
+                <button id="logout-btn" onclick="logout()">Esci</button>
+            </div>
         </header>
 
-        <div class="container" id="links-container">
-            <!-- Le categorie verranno generate qui dal JS -->
+        <!-- Pannello Editor (appare solo in Edit Mode) -->
+        <div id="editor-panel" class="hidden">
+            <div class="editor-section">
+                <h3>Nuova Categoria</h3>
+                <input type="text" id="new-cat-name" placeholder="Nome Categoria">
+                <div class="color-picker" id="color-palette"></div>
+                <button onclick="addCategory()">Aggiungi Categoria</button>
+            </div>
+            
+            <div class="editor-section">
+                <h3>Nuovo Link</h3>
+                <input type="text" id="new-link-name" placeholder="Nome Sito">
+                <input type="text" id="new-link-url" placeholder="URL (https://...)">
+                <select id="select-cat"></select>
+                <button onclick="addLink()">Aggiungi Link</button>
+            </div>
+            <p style="font-size: 0.8rem; color: #888;">*Le modifiche sono salvate localmente in questo browser.</p>
         </div>
+
+        <div class="container" id="links-container"></div>
     </div>
 
     <script src="script.js"></script>
