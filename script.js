@@ -1,4 +1,4 @@
-const PASSWORD_CORRETTA = "laTuaPassword"; // Cambiala!
+const PASSWORD_CORRETTA = "3883"; // Cambiala!
 
 // Qui gestisci tutto: Categorie, Link e Colori
 const MIEI_LINK = [
