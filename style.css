@@ -15,70 +15,68 @@ body {
     justify-content: center;
 }
 
-/* Login */
 #login-screen {
     position: fixed; inset: 0; background: var(--bg);
     display: flex; align-items: center; justify-content: center; z-index: 999;
 }
+
 .login-box {
     background: var(--card); padding: 30px; border-radius: 12px;
     border: 1px solid var(--border); text-align: center; width: 300px;
 }
+
 .login-box input {
     width: 100%; padding: 10px; margin: 15px 0; border-radius: 6px;
     border: 1px solid var(--border); background: #010409; color: white; box-sizing: border-box;
 }
 
-/* Layout Dashboard */
-#dashboard { width: 100%; max-width: 800px; padding: 40px 20px; }
-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
-h1 { font-weight: 600; font-size: 24px; margin: 0; }
-
-/* Pulsante Modifica Discreto */
-#toggle-edit {
-    background: none; border: none; cursor: pointer; opacity: 0.3; filter: grayscale(1); transition: 0.3s; font-size: 20px;
+.login-box button {
+    width: 100%; padding: 10px; background: var(--accent); color: white; border: none; border-radius: 6px; cursor: pointer;
 }
-#toggle-edit:hover { opacity: 1; filter: none; }
 
-/* Pannello Edit */
+#dashboard-content { width: 100%; max-width: 800px; padding: 40px 20px; }
+
+header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+
+#toggle-edit { background: none; border: none; cursor: pointer; opacity: 0.4; font-size: 20px; transition: 0.3s; }
+#toggle-edit:hover { opacity: 1; }
+
 #edit-panel {
     background: #1c2128; border: 1px solid var(--accent); border-radius: 12px;
-    padding: 20px; margin-bottom: 40px; display: none; /* Nascosto in View Mode */
+    padding: 20px; margin-bottom: 40px; display: none; grid-template-columns: 1fr 1fr; gap: 20px;
 }
-.body-edit-mode #edit-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 
 .panel-section h3 { font-size: 14px; margin-top: 0; color: var(--accent); }
+
 input, select {
     width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 4px;
     border: 1px solid var(--border); background: #0d1117; color: white; box-sizing: border-box;
 }
+
 .btn-add { background: #238636; color: white; border: none; padding: 8px; width: 100%; border-radius: 4px; cursor: pointer; }
 .btn-logout { grid-column: span 2; background: #da3633; color: white; border: none; padding: 5px; border-radius: 4px; margin-top: 10px; cursor: pointer; opacity: 0.7;}
 
-/* Palette Colori */
 #palette { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
-.color-dot { width: 18px; height: 18px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; }
+.color-dot { width: 20px; height: 20px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; }
 .color-dot.active { border-color: white; }
 
-/* Griglia Link */
 .category { margin-bottom: 35px; }
-.category-header { display: flex; align-items: center; margin-bottom: 15px; }
 .category-title { 
     font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; 
-    border-left: 4px solid; padding-left: 12px; color: #8b949e; 
+    border-left: 4px solid; padding-left: 12px; color: #8b949e; margin-bottom: 15px; display: block;
 }
+
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
 
 .link-card {
     background: var(--card); padding: 15px; border-radius: 8px; border: 1px solid var(--border);
     text-decoration: none; color: var(--text); text-align: center; font-size: 14px;
-    transition: 0.2s; position: relative;
+    transition: 0.2s; display: block;
 }
-.link-card:hover { border-color: var(--accent-color); transform: translateY(-2px); background: #1f242c; }
 
-/* Eliminazione in Edit Mode */
+.link-card:hover { border-color: var(--accent-color); transform: translateY(-2px); }
+
 .del-btn { 
-    display: none; position: absolute; top: -8px; right: -8px; 
-    background: #da3633; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer;
+    position: absolute; top: -8px; right: -8px; 
+    background: #da3633; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer; font-size: 12px;
 }
-.body-edit-mode .del-btn { display: block; }
