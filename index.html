@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Overlay di Accesso -->
+    <div id="login-overlay">
+        <div class="login-box">
+            <h2>Accesso Riservato</h2>
+            <input type="password" id="password-input" placeholder="Inserisci Password">
+            <button onclick="checkPassword()">Entra</button>
+        </div>
+    </div>
+
+    <!-- Contenuto Principale (nascosto all'inizio) -->
+    <div id="main-content" style="display: none;">
+        <header>
+            <h1>I Miei Preferiti</h1>
+        </header>
+
+        <div class="container" id="links-container">
+            <!-- Le categorie verranno generate qui dal JS -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
