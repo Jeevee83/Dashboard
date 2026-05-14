@@ -1,66 +1,84 @@
 :root {
-    --bg-color: #0b0e14;
-    --card-bg: #161b22;
-    --text-primary: #ffffff;
-    --text-secondary: #8b949e;
+    --bg: #0d1117;
+    --card: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --accent: #58a6ff;
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-primary);
-    margin: 0; padding-bottom: 50px;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    display: flex;
+    justify-content: center;
 }
 
-#main-content { max-width: 1000px; margin: 0 auto; padding: 20px; }
+/* Login */
+#login-screen {
+    position: fixed; inset: 0; background: var(--bg);
+    display: flex; align-items: center; justify-content: center; z-index: 999;
+}
+.login-box {
+    background: var(--card); padding: 30px; border-radius: 12px;
+    border: 1px solid var(--border); text-align: center; width: 300px;
+}
+.login-box input {
+    width: 100%; padding: 10px; margin: 15px 0; border-radius: 6px;
+    border: 1px solid var(--border); background: #010409; color: white; box-sizing: border-box;
+}
 
+/* Layout Dashboard */
+#dashboard { width: 100%; max-width: 800px; padding: 40px 20px; }
 header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+h1 { font-weight: 600; font-size: 24px; margin: 0; }
 
-.top-controls button {
-    background: #21262d; color: white; border: 1px solid #30363d;
-    padding: 8px 15px; border-radius: 6px; cursor: pointer; margin-left: 10px;
+/* Pulsante Modifica Discreto */
+#toggle-edit {
+    background: none; border: none; cursor: pointer; opacity: 0.3; filter: grayscale(1); transition: 0.3s; font-size: 20px;
 }
+#toggle-edit:hover { opacity: 1; filter: none; }
 
-/* Editor Style */
-#editor-panel {
-    background: #1c2128; border: 1px solid #3b82f6; border-radius: 12px;
-    padding: 20px; margin-bottom: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+/* Pannello Edit */
+#edit-panel {
+    background: #1c2128; border: 1px solid var(--accent); border-radius: 12px;
+    padding: 20px; margin-bottom: 40px; display: none; /* Nascosto in View Mode */
 }
-.hidden { display: none !important; }
-.editor-section input, .editor-section select {
-    display: block; width: 100%; margin-bottom: 10px; padding: 8px;
-    background: #0d1117; border: 1px solid #30363d; color: white; border-radius: 4px;
+.body-edit-mode #edit-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.panel-section h3 { font-size: 14px; margin-top: 0; color: var(--accent); }
+input, select {
+    width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 4px;
+    border: 1px solid var(--border); background: #0d1117; color: white; box-sizing: border-box;
 }
-.color-picker { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
-.color-dot {
-    width: 20px; height: 20px; border-radius: 50%; cursor: pointer; border: 2px solid transparent;
-}
+.btn-add { background: #238636; color: white; border: none; padding: 8px; width: 100%; border-radius: 4px; cursor: pointer; }
+.btn-logout { grid-column: span 2; background: #da3633; color: white; border: none; padding: 5px; border-radius: 4px; margin-top: 10px; cursor: pointer; opacity: 0.7;}
+
+/* Palette Colori */
+#palette { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+.color-dot { width: 18px; height: 18px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; }
 .color-dot.active { border-color: white; }
 
-/* Grid & Categories */
-.category { margin-bottom: 40px; position: relative; }
-.category h2 {
-    font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px;
-    color: var(--text-secondary); border-left: 4px solid; padding-left: 15px; margin-bottom: 20px;
+/* Griglia Link */
+.category { margin-bottom: 35px; }
+.category-header { display: flex; align-items: center; margin-bottom: 15px; }
+.category-title { 
+    font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; 
+    border-left: 4px solid; padding-left: 12px; color: #8b949e; 
 }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
 
 .link-card {
-    background: var(--card-bg); padding: 18px; border-radius: 10px;
-    text-decoration: none; color: var(--text-primary); font-size: 0.9rem;
-    text-align: center; border: 1px solid #30363d; transition: 0.2s; position: relative;
+    background: var(--card); padding: 15px; border-radius: 8px; border: 1px solid var(--border);
+    text-decoration: none; color: var(--text); text-align: center; font-size: 14px;
+    transition: 0.2s; position: relative;
 }
-.link-card:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+.link-card:hover { border-color: var(--accent-color); transform: translateY(-2px); background: #1f242c; }
 
-.delete-btn {
-    position: absolute; top: -5px; right: -5px; background: #ff4444; color: white;
-    border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer; font-size: 12px; display: none;
+/* Eliminazione in Edit Mode */
+.del-btn { 
+    display: none; position: absolute; top: -8px; right: -8px; 
+    background: #da3633; color: white; border: none; border-radius: 50%; width: 20px; height: 20px; cursor: pointer;
 }
-.edit-mode .delete-btn { display: block; }
-
-/* Login Box */
-#login-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: var(--bg-color); display: flex; align-items: center; justify-content: center; z-index: 2000;
-}
-.login-box { background: var(--card-bg); padding: 40px; border-radius: 15px; border: 1px solid #30363d; text-align: center; }
+.body-edit-mode .del-btn { display: block; }
